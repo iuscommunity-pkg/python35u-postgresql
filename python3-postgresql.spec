@@ -1,6 +1,6 @@
 Name:           python3-postgresql
 Version:        1.0.0
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
@@ -40,6 +40,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Aug 25 2010 Thomas Spura <tomspur@fedoraproject.org> - 1.0.0-3
+- rebuild with python3.2
+  http://lists.fedoraproject.org/pipermail/devel/2010-August/141368.html
+
 * Thu Jul 22 2010 David Malcolm <dmalcolm@redhat.com> - 1.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Features/Python_2.7/MassRebuild
 

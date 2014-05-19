@@ -1,23 +1,22 @@
 Name:           python3-postgresql
-Version:        1.0.2
-Release:        6%{?dist}
+Version:        1.1.0
+Release:        1%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
 License:        BSD
 URL:            http://python.projects.postgresql.org/
-Source0:        http://python.projects.postgresql.org/files/py-postgresql-%{version}.tar.bz2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Source0:        https://github.com/python-postgres/fe/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  python3-devel
 
 %description
-py-postgresql is a Python 3 package providing modules to work with PostgreSQL.
-This includes a high-level driver, and many other tools that support a
-developer working with PostgreSQL databases.
+python-postgresql is a Python 3 package providing modules to work with
+PostgreSQL. This includes a high-level driver, and many other tools that
+support a developer working with PostgreSQL databases.
 
 %prep
-%setup -q -n py-postgresql-%{version}
+%setup -q -n fe-%{version}
 
 
 %build
@@ -29,17 +28,15 @@ rm -rf $RPM_BUILD_ROOT
 %{__python3} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 
  
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-
 %files
-%defattr(-,root,root,-)
 %doc AUTHORS LICENSE README
 %{python3_sitearch}/*
 
 
 %changelog
+* Mon May 19 2014 Honza Horak <hhorak@redhat.com> - 1.1.0-1
+- Rebase to 1.1.0
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.0.2-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 

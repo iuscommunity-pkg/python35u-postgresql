@@ -1,3 +1,6 @@
-py-postgresql-1.0.0.tar.bz2
-/py-postgresql-1.0.2.tar.bz2
-/python3-postgresql-1.1.0.tar.gz
+BUILD
+BUILDROOT
+MOCK
+RPMS
+SOURCES/*.tar.gz
+SRPMS

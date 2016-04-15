@@ -18,19 +18,19 @@ python-postgresql is a Python 3 package providing modules to work with
 PostgreSQL. This includes a high-level driver, and many other tools that
 support a developer working with PostgreSQL databases.
 
+
 %prep
 %setup -q -n fe-%{version}
 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" %{__python35u} setup.py build
+CFLAGS="%{optflags}" %{__python35u} setup.py build
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-%{__python35u} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python35u} setup.py install -O1 --skip-build --root %{buildroot}
 
- 
+
 %files
 %{!?_licensedir:%global license %%doc}
 %license LICENSE

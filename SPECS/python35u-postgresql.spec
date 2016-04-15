@@ -32,13 +32,16 @@ rm -rf $RPM_BUILD_ROOT
 
  
 %files
-%doc AUTHORS LICENSE README
+%{!?_licensedir:%global license %%doc}
+%license LICENSE
+%doc AUTHORS README
 %{python35u_sitearch}/*
 
 
 %changelog
 * Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 1.1.0-1.ius
 - Port from Fedora to IUS
+- Use %%license when possible
 
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild

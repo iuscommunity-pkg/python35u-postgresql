@@ -1,6 +1,8 @@
-Name:           python3-postgresql
+%global ius_suffix 35u
+
+Name:           python%{ius_suffix}-postgresql
 Version:        1.1.0
-Release:        7%{?dist}
+Release:        1.ius%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
@@ -8,7 +10,8 @@ License:        BSD
 URL:            http://python.projects.postgresql.org/
 Source0:        https://github.com/python-postgres/fe/archive/v%{version}/%{name}-%{version}.tar.gz
 
-BuildRequires:  python3-devel
+BuildRequires:  python%{ius_suffix}-devel
+
 
 %description
 python-postgresql is a Python 3 package providing modules to work with
@@ -20,20 +23,23 @@ support a developer working with PostgreSQL databases.
 
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" %{__python3} setup.py build
+CFLAGS="$RPM_OPT_FLAGS" %{__python35u} setup.py build
 
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__python3} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
+%{__python35u} setup.py install -O1 --skip-build --root $RPM_BUILD_ROOT
 
  
 %files
 %doc AUTHORS LICENSE README
-%{python3_sitearch}/*
+%{python35u_sitearch}/*
 
 
 %changelog
+* Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 1.1.0-1.ius
+- Port from Fedora to IUS
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 1.1.0-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 

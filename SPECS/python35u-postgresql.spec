@@ -1,14 +1,14 @@
 %global ius_suffix 35u
 
 Name:           python%{ius_suffix}-postgresql
-Version:        1.1.0
+Version:        1.2.1
 Release:        1.ius%{?dist}
 Summary:        Connect to PostgreSQL with Python 3
 
 Group:          Applications/Databases
 License:        BSD
 URL:            http://python.projects.postgresql.org/
-Source0:        https://github.com/python-postgres/fe/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://pypi.io/packages/source/p/py-postgresql/py-postgresql-%{version}.tar.gz
 
 BuildRequires:  python%{ius_suffix}-devel
 
@@ -20,7 +20,7 @@ support a developer working with PostgreSQL databases.
 
 
 %prep
-%setup -q -n fe-%{version}
+%setup -q -n py-postgresql-%{version}
 
 
 %build
@@ -39,6 +39,10 @@ CFLAGS="%{optflags}" %{__python35u} setup.py build
 
 
 %changelog
+* Thu Dec 29 2016 Ben Harper <ben.harper@rackspace.com> - 1.2.1-1.ius
+- Latest upstream
+- update Source0 URL
+
 * Fri Apr 15 2016 Carl George <carl.george@rackspace.com> - 1.1.0-1.ius
 - Port from Fedora to IUS
 - Use %%license when possible
